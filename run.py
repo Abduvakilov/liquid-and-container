@@ -1,6 +1,10 @@
 import liquid
 import container
 import random
+import sys
+if sys.version_info <= (3, 0):
+    sys.stdout.write("Sorry, requires Python 3 or newer\n")
+    sys.exit(1)
 
 class randomLiquidsOnContainers:
 
@@ -54,7 +58,7 @@ class randomLiquidsOnContainers:
 		a = [getattr(x, 'edge', '-') for x in self.containers]
 		r = [getattr(x, 'radius', '-') or '-' for x in self.containers]
 		d = [x.angle for x in self.containers]
-		V = [round(x.volume, 2) for x in self.containers]
+		V = [round(x.volume, 3) for x in self.containers]
 		litre = [round(x.litre, 2) for x in self.containers]
 		liquid = [x.filledWith for x in self.containers]
 		liquidName = [x.filledWith.__class__.__name__ for x in self.containers]

@@ -1,7 +1,7 @@
 import math
 from random import randint
 minLength = 10
-maxLength = 100
+maxLength = 350
 class Container:   # angle is not taken into consideration beacause it will not affect to the volume
 	isFilled = False
 	def __init__(self, volume):
@@ -50,7 +50,7 @@ class SquareContainer(Container):
 		self.edge   = edge   # cm
 		self.height = height # cm
 		self.angle  = angle or 90 # degrees
-		self.volume = edge * edge * height / 10000 # m3
+		self.volume = edge * edge * height / 1000000 # m3
 		self.litre  = self.volume * 1000
 
 class CircleContainer(Container):
@@ -61,7 +61,7 @@ class CircleContainer(Container):
 		self.radius = radius  # cm
 		self.height = height  # cm
 		self.angle  = angle or 90 # degrees
-		self.volume = math.pi * radius * radius * height / 10000 # m3
+		self.volume = math.pi * radius * radius * height / 1000000 # m3
 		self.litre  = self.volume * 1000
 
 class TriangleContainer(Container):   # triangle with equal edges
@@ -72,5 +72,5 @@ class TriangleContainer(Container):   # triangle with equal edges
 		self.edge   = edge   # cm
 		self.height = height # cm
 		self.angle  = angle or 90 # degrees
-		self.volume = math.sqrt(3)/4 * edge * edge / 10000 # m3
+		self.volume = math.sqrt(3)/4 * edge * edge * height / 1000000 # m3
 		self.litre  = self.volume * 1000
