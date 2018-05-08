@@ -50,7 +50,8 @@ class SquareContainer(Container):
 		self.edge   = edge   # cm
 		self.height = height # cm
 		self.angle  = angle or 90 # degrees
-		self.volume = edge * edge * height
+		self.volume = edge * edge * height / 10000 # m3
+		self.litre  = self.volume * 1000
 
 class CircleContainer(Container):
 	name = 'Cylinder'
@@ -60,7 +61,8 @@ class CircleContainer(Container):
 		self.radius = radius  # cm
 		self.height = height  # cm
 		self.angle  = angle or 90 # degrees
-		self.volume = math.pi * radius * radius * height
+		self.volume = math.pi * radius * radius * height / 10000 # m3
+		self.litre  = self.volume * 1000
 
 class TriangleContainer(Container):   # triangle with equal edges
 	name = 'Triangular prism'
@@ -70,4 +72,5 @@ class TriangleContainer(Container):   # triangle with equal edges
 		self.edge   = edge   # cm
 		self.height = height # cm
 		self.angle  = angle or 90 # degrees
-		self.volume = math.sqrt(3)/4 * edge * edge
+		self.volume = math.sqrt(3)/4 * edge * edge / 10000 # m3
+		self.litre  = self.volume * 1000
