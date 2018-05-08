@@ -17,14 +17,22 @@ class Container:   # angle is not taken into consideration beacause it will not 
 				break
 			else:
 				try:
-					argumentArray = [int(x) for x in arguments.split(' ')]
+					argumentArray = [float(x) for x in arguments.split(' ')]
 					arg1 = argumentArray[0]
 					arg2 = argumentArray[1]
-				except IndexError:
-					print("Enter 2 numbers, at least, please. Try again")
+					if arg1<=0 or arg2<=0:
+						raise Exception("Insert positive number ")
+				except:
+					print("Enter 2 positive numbers, at least, please. Try again")
 					continue
 				else:
 					arg3 = argumentArray[2] if len(argumentArray)>2 else None
+					if arg3 is not None:
+						while arg3>90 or arg3<=0:
+							try:
+								arg3 = int(input("Insert a number between 1 and 90 for angle "))
+							except:
+								continue
 					break
 		return (arg1, arg2, arg3)
 
@@ -42,7 +50,7 @@ class SquareContainer(Container):
 		self.edge   = edge   # cm
 		self.height = height # cm
 		self.angle  = angle or 90 # degrees
-		self.volume = int(edge * edge * height)
+		self.volume = edge * edge * height
 
 class CircleContainer(Container):
 	name = 'Cylinder'
@@ -52,7 +60,7 @@ class CircleContainer(Container):
 		self.radius = radius  # cm
 		self.height = height  # cm
 		self.angle  = angle or 90 # degrees
-		self.volume = int(math.pi * radius * radius * height)
+		self.volume = math.pi * radius * radius * height
 
 class TriangleContainer(Container):   # triangle with equal edges
 	name = 'Triangular prism'
@@ -62,4 +70,4 @@ class TriangleContainer(Container):   # triangle with equal edges
 		self.edge   = edge   # cm
 		self.height = height # cm
 		self.angle  = angle or 90 # degrees
-		self.volume = int(math.sqrt(3)/4 * edge * edge)
+		self.volume = math.sqrt(3)/4 * edge * edge
